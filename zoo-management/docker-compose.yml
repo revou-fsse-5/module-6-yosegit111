@@ -1,0 +1,13 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5001:5000"  
+    environment:
+      SUPABASE_URL: https://ztzllbmpxqsguxcxewja.supabase.co
+      SUPABASE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0emxsYm1weHFzZ3V4Y3hld2phIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc2MTgxMDksImV4cCI6MjA0MzE5NDEwOX0.v7ZSD3VPx3FoFpOt-yZf7HIE8uo_pLniJ5fGavMXOGw
+    volumes:
+      - .:/app
+    env_file:
+      - .env

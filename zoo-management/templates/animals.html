@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Animals</h2>
+
+    <h3>Add New Animal</h3>
+    <form method="POST" action="{{ url_for('add_animal') }}">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="species" placeholder="Species" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="text" name="gender" placeholder="Gender (Male/Female)" required>
+        <input type="text" name="area_code" placeholder="Area Code" required>
+        <button type="submit">Add Animal</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Area Code</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, animal in enumerate(animals, start=1) %}
+            <tr>
+                <td>{{ index }}</td>
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.species }}</td>
+                <td>{{ animal.age }}</td>
+                <td>{{ animal.gender }}</td>
+                <td>{{ animal.area_code }}</td>
+                <td>
+                    <!-- Update Animal Button with JavaScript Password Prompt -->
+                    <form method="POST" action="{{ url_for('update_animal_route', id=animal.id) }}" onsubmit="return confirmPassword()">
+                        <button type="submit">Update</button>
+                    </form>
+                    
+                    <!-- Delete Animal Button with JavaScript Password Prompt -->
+                    <form method="POST" action="{{ url_for('delete_animal_route', id=animal.id) }}" onsubmit="return confirmPassword()">
+                        <button type="submit">Delete</button>
+                    </form>
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+     <!-- JavaScript Password Prompt -->
+     <script>
+        function confirmPassword() {
+            var password = prompt("Please enter the password to proceed:");
+            if (password === "Warning12345!") {
+                return true;
+            } else {
+                alert("Incorrect password!");
+                return false;
+            }
+        }
+    </script>
+{% endblock %}

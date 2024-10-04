@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Update Employee</h2>
+    <form method="POST">
+        <input type="text" name="name" value="{{ employee.name }}" placeholder="Name" required>
+        <input type="email" name="email" value="{{ employee.email }}" placeholder="Email" required>
+        <input type="text" name="phone_number" value="{{ employee.phone_number }}" placeholder="Phone Number" required>
+        <input type="text" name="role" value="{{ employee.role }}" placeholder="Role" required>
+        <input type="text" name="schedule" value="{{ employee.schedule }}" placeholder="Schedule" required>
+        <input type="password" name="password" placeholder="Enter password to update" required>
+        <button type="submit">Update Employee</button>
+    </form>
+{% endblock %}
