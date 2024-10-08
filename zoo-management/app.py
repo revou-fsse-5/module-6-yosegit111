@@ -133,4 +133,4 @@ def delete_employee_route(id):
     return redirect(url_for('employee_page'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
